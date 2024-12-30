@@ -1,0 +1,502 @@
+
+local ReplicatedStorage = game:GetService("ReplicatedStorage")
+
+local function Chat(msg)
+	local DefaultChatSystemChatEvents = ReplicatedStorage:FindFirstChild("DefaultChatSystemChatEvents")
+	local SayMessageRequest = DefaultChatSystemChatEvents:FindFirstChild("SayMessageRequest")
+	SayMessageRequest:FireServer(msg, "All")
+end
+
+local function BootUpGui()
+	local BotChatProp = workspace:FindFirstChild("BotChatProp")
+	local Enabled = false
+
+	local ChatBotGui = Instance.new("ScreenGui")
+	local ChatBotInterface = Instance.new("Frame")
+	local UICornerCBI = Instance.new("UICorner")
+	local ChatBotMainInterface = Instance.new("Frame")
+	local UICornerCBMI = Instance.new("UICorner")
+	local ChatInterface = Instance.new("Frame")
+	local UICornerCI_ = Instance.new("UICorner")
+	local ScrollingFrame = Instance.new("ScrollingFrame")
+	local AddChatButton = Instance.new("TextButton")
+	local UICornerACB__ = Instance.new("UICorner")
+	local Status = Instance.new("TextLabel")
+	local StartButton = Instance.new("TextButton")
+	local UICornerSCB_ = Instance.new("UICorner")
+	local StopButton = Instance.new("TextButton")
+	local UICornerSCB__ = Instance.new("UICorner")
+	local TimeBox = Instance.new("TextBox")
+	local UICornerTBC_ = Instance.new("UICorner")
+	local CloseButton = Instance.new("TextButton")
+	local UICornerCBCB = Instance.new("UICorner")
+	local Title = Instance.new("TextLabel")
+	local AddFrame = Instance.new("Frame")
+	local UICornerAF = Instance.new("UICorner")
+	local TextBox = Instance.new("TextBox")
+	local UICornerTB = Instance.new("UICorner")
+	local AddButton = Instance.new("TextButton")
+	local UICornerAB = Instance.new("UICorner")
+	local CancelButton = Instance.new("TextButton")
+	local UICornerCB_ = Instance.new("UICorner")
+	local UI_List = Instance.new("UIListLayout", ScrollingFrame)
+
+	--Properties:
+
+	ChatBotGui.Name = "ChatBotGui"
+	ChatBotGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+	ChatBotGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+
+	ChatBotInterface.Name = "ChatBotInterface"
+	ChatBotInterface.Parent = ChatBotGui
+	ChatBotInterface.BackgroundColor3 = Color3.fromRGB(45, 45, 45)
+	ChatBotInterface.BorderColor3 = Color3.fromRGB(0, 0, 0)
+	ChatBotInterface.BorderSizePixel = 0
+	ChatBotInterface.Position = UDim2.new(0.545275569, 0, 0.20514603, 0)
+	ChatBotInterface.Size = UDim2.new(0.384842515, 0, 0.587621689, 0)
+
+	UICornerCBI.CornerRadius = UDim.new(0, 4)
+	UICornerCBI.Name = "UICornerCBI"
+	UICornerCBI.Parent = ChatBotInterface
+
+	ChatBotMainInterface.Name = "ChatBotMainInterface"
+	ChatBotMainInterface.Parent = ChatBotInterface
+	ChatBotMainInterface.BackgroundColor3 = Color3.fromRGB(35, 35, 35)
+	ChatBotMainInterface.BorderColor3 = Color3.fromRGB(0, 0, 0)
+	ChatBotMainInterface.BorderSizePixel = 0
+	ChatBotMainInterface.Position = UDim2.new(0.000181232273, 0, 0.0923139602, 0)
+	ChatBotMainInterface.Size = UDim2.new(1, 0, 0.905325472, 0)
+
+	UICornerCBMI.CornerRadius = UDim.new(0, 4)
+	UICornerCBMI.Name = "UICornerCBMI"
+	UICornerCBMI.Parent = ChatBotMainInterface
+
+	ChatInterface.Name = "ChatInterface"
+	ChatInterface.Parent = ChatBotMainInterface
+	ChatInterface.BackgroundColor3 = Color3.fromRGB(37, 37, 37)
+	ChatInterface.BorderColor3 = Color3.fromRGB(0, 0, 0)
+	ChatInterface.BorderSizePixel = 0
+	ChatInterface.Size = UDim2.new(0.237851664, 0, 1, 0)
+
+	UICornerCI_.CornerRadius = UDim.new(0, 4)
+	UICornerCI_.Name = "UICornerCI_"
+	UICornerCI_.Parent = ChatInterface
+
+	ScrollingFrame.Parent = ChatInterface
+	ScrollingFrame.Active = true
+	ScrollingFrame.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	ScrollingFrame.BackgroundTransparency = 1.000
+	ScrollingFrame.BorderColor3 = Color3.fromRGB(0, 0, 0)
+	ScrollingFrame.BorderSizePixel = 0
+	ScrollingFrame.Size = UDim2.new(1, 0, 1, 0)
+	ScrollingFrame.ScrollBarThickness = 5
+	ScrollingFrame.VerticalScrollBarPosition = Enum.VerticalScrollBarPosition.Left
+
+	AddChatButton.Name = "AddChatButton"
+	AddChatButton.Parent = ScrollingFrame
+	AddChatButton.BackgroundColor3 = Color3.fromRGB(65, 65, 65)
+	AddChatButton.BorderColor3 = Color3.fromRGB(0, 0, 0)
+	AddChatButton.BorderSizePixel = 0
+	AddChatButton.Size = UDim2.new(0, 93, 0, 22)
+	AddChatButton.Font = Enum.Font.Jura
+	AddChatButton.Text = "Add Chat"
+	AddChatButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+	AddChatButton.TextScaled = true
+	AddChatButton.TextSize = 14.000
+	AddChatButton.TextWrapped = true
+
+	UICornerACB__.CornerRadius = UDim.new(0, 4)
+	UICornerACB__.Name = "UICornerACB__"
+	UICornerACB__.Parent = AddChatButton
+
+	Status.Name = "Status"
+	Status.Parent = ChatBotMainInterface
+	Status.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	Status.BackgroundTransparency = 1.000
+	Status.BorderColor3 = Color3.fromRGB(0, 0, 0)
+	Status.BorderSizePixel = 0
+	Status.Position = UDim2.new(0.271099746, 0, 0, 0)
+	Status.Size = UDim2.new(0.726342738, 0, 0.071895428, 0)
+	Status.Font = Enum.Font.Jura
+	Status.Text = "STATUS: Idle"
+	Status.TextColor3 = Color3.fromRGB(255, 255, 255)
+	Status.TextScaled = true
+	Status.TextSize = 14.000
+	Status.TextWrapped = true
+	Status.TextXAlignment = Enum.TextXAlignment.Left
+
+	StartButton.Name = "StartButton"
+	StartButton.Parent = ChatBotMainInterface
+	StartButton.BackgroundColor3 = Color3.fromRGB(11, 170, 0)
+	StartButton.BorderColor3 = Color3.fromRGB(0, 0, 0)
+	StartButton.BorderSizePixel = 0
+	StartButton.Position = UDim2.new(0.271099746, 0, 0.101307191, 0)
+	StartButton.Size = UDim2.new(0.294117659, 0, 0.0686274543, 0)
+	StartButton.Font = Enum.Font.Jura
+	StartButton.Text = "Start"
+	StartButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+	StartButton.TextScaled = true
+	StartButton.TextSize = 14.000
+	StartButton.TextWrapped = true
+
+	UICornerSCB_.CornerRadius = UDim.new(0, 4)
+	UICornerSCB_.Name = "UICornerSCB_"
+	UICornerSCB_.Parent = StartButton
+
+	StopButton.Name = "StopButton"
+	StopButton.Parent = ChatBotMainInterface
+	StopButton.BackgroundColor3 = Color3.fromRGB(225, 0, 0)
+	StopButton.BorderColor3 = Color3.fromRGB(0, 0, 0)
+	StopButton.BorderSizePixel = 0
+	StopButton.Position = UDim2.new(0.271099746, 0, 0.199346408, 0)
+	StopButton.Size = UDim2.new(0.294117659, 0, 0.0686274543, 0)
+	StopButton.Font = Enum.Font.Jura
+	StopButton.Text = "Stop"
+	StopButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+	StopButton.TextScaled = true
+	StopButton.TextSize = 14.000
+	StopButton.TextWrapped = true
+
+	UICornerSCB__.CornerRadius = UDim.new(0, 4)
+	UICornerSCB__.Name = "UICornerSCB__|"
+	UICornerSCB__.Parent = StopButton
+
+	TimeBox.Name = "TimeBox"
+	TimeBox.Parent = ChatBotMainInterface
+	TimeBox.BackgroundColor3 = Color3.fromRGB(65, 65, 65)
+	TimeBox.BorderColor3 = Color3.fromRGB(0, 0, 0)
+	TimeBox.BorderSizePixel = 0
+	TimeBox.Position = UDim2.new(0.271099746, 0, 0.300653607, 0)
+	TimeBox.Size = UDim2.new(0.294117659, 0, 0.0686274543, 0)
+	TimeBox.Font = Enum.Font.Jura
+	TimeBox.PlaceholderText = "Time between each chat"
+	TimeBox.Text = "1"
+	TimeBox.TextColor3 = Color3.fromRGB(255, 255, 255)
+	TimeBox.TextScaled = true
+	TimeBox.TextSize = 14.000
+	TimeBox.TextWrapped = true
+
+	UICornerTBC_.CornerRadius = UDim.new(0, 4)
+	UICornerTBC_.Name = "UICornerTBC_"
+	UICornerTBC_.Parent = TimeBox
+
+	CloseButton.Name = "CloseButton"
+	CloseButton.Parent = ChatBotInterface
+	CloseButton.BackgroundColor3 = Color3.fromRGB(45, 45, 45)
+	CloseButton.BorderColor3 = Color3.fromRGB(0, 0, 0)
+	CloseButton.BorderSizePixel = 0
+	CloseButton.Position = UDim2.new(0.920716107, 0, 0, 0)
+	CloseButton.Size = UDim2.new(0.0792838857, 0, 0.0917159766, 0)
+	CloseButton.AutoButtonColor = false
+	CloseButton.Font = Enum.Font.Jura
+	CloseButton.Text = "X"
+	CloseButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+	CloseButton.TextScaled = true
+	CloseButton.TextSize = 14.000
+	CloseButton.TextWrapped = true
+
+	UICornerCBCB.CornerRadius = UDim.new(0, 4)
+	UICornerCBCB.Name = "UICornerCBCB"
+	UICornerCBCB.Parent = CloseButton
+
+	Title.Name = "Title"
+	Title.Parent = ChatBotInterface
+	Title.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	Title.BackgroundTransparency = 1.000
+	Title.BorderColor3 = Color3.fromRGB(0, 0, 0)
+	Title.BorderSizePixel = 0
+	Title.Position = UDim2.new(0, 0, 0.0123564135, 0)
+	Title.Size = UDim2.new(0.920716107, 0, 0.0650887564, 0)
+	Title.Font = Enum.Font.Jura
+	Title.Text = "Chat bot | made by Advanced Scr!pter"
+	Title.TextColor3 = Color3.fromRGB(255, 255, 255)
+	Title.TextScaled = true
+	Title.TextSize = 14.000
+	Title.TextWrapped = true
+	Title.TextXAlignment = Enum.TextXAlignment.Left
+
+	AddFrame.Name = "AddFrame"
+	AddFrame.Parent = ChatBotGui
+	AddFrame.BackgroundColor3 = Color3.fromRGB(33, 33, 33)
+	AddFrame.BorderColor3 = Color3.fromRGB(0, 0, 0)
+	AddFrame.BorderSizePixel = 0
+	AddFrame.Position = UDim2.new(0.137795269, 0, 0.250009865, 0)
+	AddFrame.Size = UDim2.new(0, 249, 0, 267)
+	AddFrame.Visible = false
+
+	UICornerAF.CornerRadius = UDim.new(0, 4)
+	UICornerAF.Name = "UICornerAF"
+	UICornerAF.Parent = AddFrame
+
+	TextBox.Parent = AddFrame
+	TextBox.BackgroundColor3 = Color3.fromRGB(65, 65, 65)
+	TextBox.BorderColor3 = Color3.fromRGB(0, 0, 0)
+	TextBox.BorderSizePixel = 0
+	TextBox.Position = UDim2.new(0.0481927693, 0, 0.0599250942, 0)
+	TextBox.Size = UDim2.new(0, 224, 0, 58)
+	TextBox.Font = Enum.Font.Jura
+	TextBox.PlaceholderText = "Add text."
+	TextBox.Text = ""
+	TextBox.TextColor3 = Color3.fromRGB(255, 255, 255)
+	TextBox.TextScaled = true
+	TextBox.TextSize = 14.000
+	TextBox.TextWrapped = true
+
+	UICornerTB.CornerRadius = UDim.new(0, 4)
+	UICornerTB.Name = "UICornerTB"
+	UICornerTB.Parent = TextBox
+
+	AddButton.Name = "AddButton"
+	AddButton.Parent = AddFrame
+	AddButton.BackgroundColor3 = Color3.fromRGB(45, 45, 45)
+	AddButton.BorderColor3 = Color3.fromRGB(0, 0, 0)
+	AddButton.BorderSizePixel = 0
+	AddButton.Position = UDim2.new(0.0481927693, 0, 0.370786518, 0)
+	AddButton.Size = UDim2.new(0, 224, 0, 58)
+	AddButton.Font = Enum.Font.Jura
+	AddButton.Text = "Add"
+	AddButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+	AddButton.TextScaled = true
+	AddButton.TextSize = 14.000
+	AddButton.TextWrapped = true
+
+	UICornerAB.CornerRadius = UDim.new(0, 4)
+	UICornerAB.Name = "UICornerAB"
+	UICornerAB.Parent = AddButton
+
+	CancelButton.Name = "CancelButton"
+	CancelButton.Parent = AddFrame
+	CancelButton.BackgroundColor3 = Color3.fromRGB(45, 45, 45)
+	CancelButton.BorderColor3 = Color3.fromRGB(0, 0, 0)
+	CancelButton.BorderSizePixel = 0
+	CancelButton.Position = UDim2.new(0.0481927693, 0, 0.621722817, 0)
+	CancelButton.Size = UDim2.new(0, 224, 0, 58)
+	CancelButton.Font = Enum.Font.Jura
+	CancelButton.Text = "Cancel"
+	CancelButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+	CancelButton.TextScaled = true
+	CancelButton.TextSize = 14.000
+	CancelButton.TextWrapped = true
+
+	UICornerCB_.CornerRadius = UDim.new(0, 4)
+	UICornerCB_.Name = "UICornerCB_|"
+	UICornerCB_.Parent = CancelButton
+	
+	UI_List.Padding = UDim.new(0, 5)
+	UI_List.SortOrder = Enum.SortOrder.Custom
+	
+	AddFrame.Draggable = true
+	AddFrame.Selectable = true
+	AddFrame.Active = true
+
+	ChatBotInterface.Draggable = true
+	ChatBotInterface.Selectable = true
+	ChatBotInterface.Active = true
+	
+	CancelButton.MouseButton1Click:Connect(function()
+		AddFrame.Visible = false
+		TextBox.Text = ""
+	end)
+	
+	CloseButton.MouseButton1Click:Connect(function()
+		if BotChatProp then
+			BotChatProp:Destroy()
+			ChatBotGui:Destroy()
+			Enabled = false
+		end
+	end)
+	
+	AddChatButton.MouseButton1Click:Connect(function()
+		if BotChatProp.Settings.CurrentlyChat.Value <= BotChatProp.Settings.Limit.Value - 1 then
+			AddFrame.Visible = true
+		end
+	end)
+	
+	local function RemoveChat_F(Tem)
+		local _S = BotChatProp:FindFirstChild("Chats"):FindFirstChild(Tem.Name)
+		_S:Destroy()
+		Tem:Destroy()
+		BotChatProp.Settings.CurrentlyChat.Value -= 1
+	end
+	
+	
+	-- Define the GamePass ID
+	local GamePassID = 1017083576  -- Replace with your actual GamePass ID
+
+	-- Define the whitelist of user IDs
+	local whitelist = {
+		0,  -- Replace with actual user IDs
+	}
+
+	-- Function to check if a player is in the whitelist
+	local function IsWhitelisted(player)
+		for _, userId in ipairs(whitelist) do
+			if player.UserId == userId then
+				return true
+			end
+		end
+		return false
+	end
+
+	-- Function to check if a player owns the GamePass
+	local function PlayerHasPass(player, passID)
+		return game:GetService("MarketplaceService"):UserOwnsGamePassAsync(player.UserId, passID)
+	end
+
+	-- Function to prompt the player to buy the GamePass
+	local function PromptGamePass(player, passID)
+		game:GetService("MarketplaceService"):PromptGamePassPurchase(player, passID)
+	end
+
+	local function AddChat_F(Name)
+		local player = game.Players.LocalPlayer
+		if BotChatProp.Settings.CurrentlyChat.Value >= BotChatProp.Settings.Limit.Value then
+			if not PlayerHasPass(player, GamePassID) and not IsWhitelisted(player) then
+				warn("Limit hit, remove one or buy the limit gamepass, it gonna add 1K+ limit!")
+				PromptGamePass(player, GamePassID)
+			else
+				BotChatProp.Settings.CurrentlyChat.Value += 1
+				-- Create a new TextButton instance as a child of ScrollingFrame
+				local Template = Instance.new("TextButton", ScrollingFrame)
+				Template.Size = UDim2.new(0, 93, 0, 22)
+				Template.Name = Name
+				Template.Text = Name
+				Template.BackgroundColor3 = Color3.new(0.254902, 0.254902, 0.254902)
+				Template.TextColor3 = Color3.new(1, 1, 1)
+				Template.TextScaled = true
+
+				local TemplateCorner = Instance.new("UICorner", Template)
+				TemplateCorner.CornerRadius = UDim.new(0, 4)
+
+				-- Create a new StringValue instance as a child of the Chats object inside BotChatProp
+				local String_ = Instance.new("StringValue", BotChatProp:FindFirstChild("Chats"))
+				String_.Name = Name
+				String_.Value = Name
+
+				-- Connect the MouseButton1Click event to the RemoveChat_F function
+				Template.MouseButton1Click:Connect(function()
+					RemoveChat_F(Template)
+				end)
+			end
+		else
+			BotChatProp.Settings.CurrentlyChat.Value += 1
+			-- Create a new TextButton instance as a child of ScrollingFrame
+			local Template = Instance.new("TextButton", ScrollingFrame)
+			Template.Size = UDim2.new(0, 93, 0, 22)
+			Template.Name = Name
+			Template.Text = Name
+			Template.BackgroundColor3 = Color3.new(0.254902, 0.254902, 0.254902)
+			Template.TextColor3 = Color3.new(1, 1, 1)
+			Template.TextScaled = true
+
+			local TemplateCorner = Instance.new("UICorner", Template)
+			TemplateCorner.CornerRadius = UDim.new(0, 4)
+
+			-- Create a new StringValue instance as a child of the Chats object inside BotChatProp
+			local String_ = Instance.new("StringValue", BotChatProp:FindFirstChild("Chats"))
+			String_.Name = Name
+			String_.Value = Name
+
+			-- Connect the MouseButton1Click event to the RemoveChat_F function
+			Template.MouseButton1Click:Connect(function()
+				RemoveChat_F(Template)
+			end)
+		end
+	end
+
+	-- Connect the AddChat_F function as needed, for example:
+	-- game.Players.PlayerAdded:Connect(function(player) AddChat_F(player.Name) end)
+
+
+	
+	AddButton.MouseButton1Click:Connect(function()
+		if TextBox.Text ~= "" or nil then
+			AddChat_F(TextBox.Text)
+			AddFrame.Visible = false
+			TextBox.Text = ""
+		end
+	end)
+	
+	local function Start_()
+		Enabled = true
+		Status.Text = "STATUS: Chatting!"
+		
+	end
+	
+	local function Stop_()
+		Enabled = false
+		Status.Text = "STATUS: Idle"
+		
+	end
+	
+	StartButton.MouseButton1Click:Connect(function()
+		local _CHATS = BotChatProp.Chats:GetChildren()
+		if _CHATS then
+			Start_()
+		else
+			warn("There no chat found!")
+		end
+	end)
+	StopButton.MouseButton1Click:Connect(function()
+		Stop_()
+	end)
+	
+	while true do
+		if Enabled then
+			local InChats = BotChatProp:FindFirstChild("Chats"):GetChildren()
+			local RandomizerChat = InChats[Random.new():NextInteger(1, #InChats)]
+
+			if RandomizerChat then
+				Chat(RandomizerChat.Name)
+			end
+
+			wait(tonumber(TimeBox.Text) or 1)
+		end
+		wait(0.1)
+	end
+
+end
+
+local plr = game.Players.LocalPlayer
+
+local BotChatProp = workspace:FindFirstChild("BotChatProp")
+
+
+local function Setup()
+	local BotChatProp = Instance.new("Folder", workspace)
+	BotChatProp.Name = "BotChatProp"
+	
+	local Chats_Folder = Instance.new("Folder", BotChatProp)
+	Chats_Folder.Name = "Chats"
+	
+	local ChatSettings_Folder = Instance.new("Folder", BotChatProp)
+	ChatSettings_Folder.Name = "Settings"
+	
+	local LimitChats = Instance.new("NumberValue", ChatSettings_Folder)
+	LimitChats.Name = "Limit"
+	
+	local GamePassID = 1017083576
+
+	local function PlayerHasPass(player, passID)
+		return game:GetService("MarketplaceService"):UserOwnsGamePassAsync(player.UserId, passID)
+	end
+
+	if PlayerHasPass(plr, GamePassID) then
+        LimitChats.Value = 1000
+	else
+		LimitChats.Value = 10
+	end
+	
+	local CurrentlyChats = Instance.new("NumberValue", ChatSettings_Folder)
+	CurrentlyChats.Name = "CurrentlyChat"
+	CurrentlyChats.Value = 0
+end
+
+
+if BotChatProp then
+	warn("Bot Chat is already executed!")
+else
+	Setup()
+	warn("Bot chat executed!")
+	BootUpGui()
+end
